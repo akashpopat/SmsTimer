@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sms Timer</string>
+    <string name="ph_no">Phone Number</string>
+    <string name="message">Enter your message</string>
+    <string name="send">Send</string>
+    <string name="_0_0">0:0</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="enter_your_message">Enter your message</string>
+    <string name="min"></string>
+
+</resources>
