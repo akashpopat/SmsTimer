@@ -11,6 +11,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,8 +55,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String ph_no =phone.getText().toString();
                 String msg=message.getText().toString();
-                if(ph_no.length()>0&&msg.length()>0)
-                    sendMessage(ph_no,msg);
+                if(ph_no.length()>0&&msg.length()>0) {
+
+                    Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
+
+                    sendMessage(ph_no, msg);
+                }
                 else
                 {
                     Toast.makeText(getApplicationContext(), "Fill up all the details", Toast.LENGTH_LONG).show();
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Calendar c = Calendar.getInstance();
+                    SimpleDateFormat sdf=new SimpleDateFormat("kk:mm");
                     int sHour=c.get(Calendar.HOUR);
                     int sMin=c.get(Calendar.MINUTE);
                     if(sHour==h&&sMin==m) {
@@ -85,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 }
-            }
+            };
+            r.run();
 
 
 
