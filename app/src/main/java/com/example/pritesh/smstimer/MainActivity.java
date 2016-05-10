@@ -1,6 +1,7 @@
 package com.example.pritesh.smstimer;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -10,11 +11,12 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String tag="com.example.pritesh.smstimer";
     Button send;
     EditText phone;
     EditText message;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         min=(NumberPicker)findViewById(R.id.min);
         time=(TextView)findViewById(R.id.time);
         hour.setMinValue(0);
-        hour.setMaxValue(24);
+        hour.setMaxValue(23);
         min.setMinValue(0);
         min.setMaxValue(59);
         hour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -77,24 +79,38 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            Runnable r = new Runnable() {
+          /*  Runnable r = new Runnable() {
                 @Override
                 public void run() {
+
                     Calendar c = Calendar.getInstance();
-                    SimpleDateFormat sdf=new SimpleDateFormat("kk:mm");
-                    int sHour=c.get(Calendar.HOUR);
-                    int sMin=c.get(Calendar.MINUTE);
-                    if(sHour==h&&sMin==m) {
-                        SmsManager smsManager = SmsManager.getDefault();
-                        smsManager.sendTextMessage(ph_no, null, msg, null, null);
-                        Toast.makeText(getApplicationContext(), "Sms Sent", Toast.LENGTH_LONG).show();
+                    while(true) {
+
+                        //  SimpleDateFormat sdf=new SimpleDateFormat("kk:mm");
+                        int sHour = c.get(Calendar.HOUR_OF_DAY);
+                        int sMin = c.get(Calendar.MINUTE);
+                        Log.i(tag, "hi");
+                        if (sHour == h && sMin == m) {
+                            SmsManager smsManager = SmsManager.getDefault();
+                            smsManager.sendTextMessage(ph_no, null, msg, null, null);
+                            Toast.makeText(getApplicationContext(), "Sms Sent", Toast.LENGTH_LONG).show();
+                            break;
+                        }
 
                     }
                 }
             };
-            r.run();
+            Thread thread = new Thread(r);
 
-
+            thread.run();*/
+         //   String ho= Integer.toString(h);
+           // String mi=Integer.toString(m);
+            Intent i=new Intent(this,MyService.class);
+            i.putExtra("hours",h);
+            i.putExtra("mins",m);
+            i.putExtra("phone",ph_no);
+            i.putExtra("msg",msg);
+            startService(i);
 
 
         }
