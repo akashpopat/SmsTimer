@@ -7,5 +7,6 @@
     <string name="phone_number">Phone Number</string>
     <string name="enter_your_message">Enter your message</string>
     <string name="min"></string>
+    <string name="title_activity_time__picker">Time_Picker</string>
 
 </resources>

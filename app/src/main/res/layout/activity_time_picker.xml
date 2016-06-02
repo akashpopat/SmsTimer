@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    style="@android:style/TextAppearance.Holo.Widget.EditText"
+    android:background="@color/bright_foreground_disabled_material_light"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <TimePicker
+            android:layout_width="match_parent"
+            android:layout_height="129dp"
+            android:id="@+id/timePicker"
+            android:layout_gravity="center_horizontal"
+            android:timePickerMode="spinner"
+            android:background="@drawable/abc_list_longpressed_holo" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/Phone"
+            android:layout_marginTop="25dp"
+            style="@style/AppTheme"
+            android:background="@drawable/abc_list_longpressed_holo"
+            android:hint="Phone Number" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:layout_marginTop="25dp"
+            android:id="@+id/message"
+            android:hint="@string/enter_your_message"
+            android:gravity="top"
+            android:background="@drawable/abc_list_longpressed_holo" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Timer"
+            android:id="@+id/setAlarm"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.12"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/abc_list_longpressed_holo"
+            android:onClick="setAlarm" />
+
+
+
+
+    </LinearLayout>
