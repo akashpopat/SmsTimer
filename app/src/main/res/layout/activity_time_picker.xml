@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     style="@android:style/TextAppearance.Holo.Widget.EditText"
-    android:background="@color/bright_foreground_disabled_material_light"
+    android:background="@color/highlighted_text_material_light"
     xmlns:android="http://schemas.android.com/apk/res/android">
         <TimePicker
             android:layout_width="match_parent"
@@ -14,7 +14,8 @@
             android:id="@+id/timePicker"
             android:layout_gravity="center_horizontal"
             android:timePickerMode="spinner"
-            android:background="@drawable/abc_list_longpressed_holo" />
+            android:background="@color/accent_material_dark"
+            android:layout_weight="0.30" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,8 +24,12 @@
             android:id="@+id/Phone"
             android:layout_marginTop="25dp"
             style="@style/AppTheme"
-            android:background="@drawable/abc_list_longpressed_holo"
-            android:hint="Phone Number" />
+            android:background="@color/button_material_light"
+            android:hint="Phone Number"
+            android:layout_weight="0.35"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="5dp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -33,7 +38,10 @@
             android:id="@+id/message"
             android:hint="@string/enter_your_message"
             android:gravity="top"
-            android:background="@drawable/abc_list_longpressed_holo" />
+            android:background="@color/button_material_light"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -43,7 +51,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.12"
             android:layout_marginTop="25dp"
-            android:background="@drawable/abc_list_longpressed_holo"
+            android:background="@color/button_material_dark"
             android:onClick="setAlarm" />
 
 

@@ -19,7 +19,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".noti"/>
+
         <activity android:name=".MainActivity">
 
         </activity>
@@ -32,7 +35,10 @@
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"/>
 
 
     </application>

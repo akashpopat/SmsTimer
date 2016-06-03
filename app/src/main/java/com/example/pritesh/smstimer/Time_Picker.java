@@ -56,15 +56,17 @@ public class Time_Picker extends AppCompatActivity {
                 cal.set(Calendar.MINUTE, time_picker.getCurrentMinute());
                 cal.set(Calendar.HOUR_OF_DAY,time_picker.getCurrentHour());
             }
-            int a=(int)(cal.getTimeInMillis()-(Calendar.getInstance().get(Calendar.SECOND)%60))%60;
-            int b=(int)cal.getTimeInMillis()%60;
-            int c=cal.get(Calendar.HOUR_OF_DAY);
+
+            int a=(Calendar.getInstance().get(Calendar.SECOND)*1000);
+           // int b= (int) ((cal.getTimeInMillis()/1000)%60);
             //Intent to call the broadcast Reciever
+
+
             myIntent = new Intent(this, MyReceiver.class);
             //Pending Intent for sending the intent afterwards
             pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(),0, myIntent, 0);
             alarmManager=(AlarmManager)(this.getSystemService(Context.ALARM_SERVICE));
-            alarmManager.set(AlarmManager.RTC,cal.getTimeInMillis()-(Calendar.getInstance().get(Calendar.SECOND))%60
+            alarmManager.set(AlarmManager.RTC,cal.getTimeInMillis()-a
 
                     , pendingIntent);
         }
