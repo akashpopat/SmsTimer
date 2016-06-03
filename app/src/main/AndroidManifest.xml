@@ -12,7 +12,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Time_Picker"
-            android:label="@string/title_activity_time__picker"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,16 +20,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".noti"/>
-
-        <activity android:name=".MainActivity">
-
-        </activity>
-
-        <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true" />
 
         <receiver
             android:name=".MyReceiver"
