@@ -1,13 +1,11 @@
 package com.example.pritesh.smstimer;
 
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -44,46 +42,49 @@ public class MyReceiver extends BroadcastReceiver {
                 .setSmallIcon(R.drawable.favicon);
         //Intent for sending confirmation
 
-        Intent sent=new Intent(SENT);
+        Intent sent=new Intent();
+        sent.setFlags(1);
+        sent.setAction("notification");
         //PendingIntent for sending confirmation
 
         PendingIntent sentIntent=PendingIntent.getBroadcast(context,0,sent,PendingIntent.FLAG_UPDATE_CURRENT);
         //Reciever for sent confirmation
 
-        Intent deliveryIntent = new Intent(DELIVERED);
-
+        Intent deliveryIntent = new Intent();
+        deliveryIntent.setFlags(2);
+        deliveryIntent.setAction("notification");
         PendingIntent deliverPI = PendingIntent.getBroadcast(
                 context, 0, deliveryIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        context.registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String result = "";
+//        context.registerReceiver(new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                String result = "";
+//
+//                switch (getResultCode()) {
+//
+//                    case Activity.RESULT_OK:
+//                        result = "Transmission successful";
+//                        notificationManager.notify(0,notification_sent.build());
+//                        break;
+//                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+//                        result = "No service";
+//                        notificationManager.notify(0,notification_notsent.build());
+//                        break;
+//                }
+//            }
+//        },new IntentFilter(SENT));
 
-                switch (getResultCode()) {
-
-                    case Activity.RESULT_OK:
-                        result = "Transmission successful";
-                        notificationManager.notify(0,notification_sent.build());
-                        break;
-                    case SmsManager.RESULT_ERROR_NO_SERVICE:
-                        result = "No service";
-                        notificationManager.notify(0,notification_notsent.build());
-                        break;
-                }
-            }
-        },new IntentFilter(SENT));
-
-        context.registerReceiver(new BroadcastReceiver() {
-
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Toast.makeText(context, "Deliverd",
-                        Toast.LENGTH_LONG).show();
-            }
-
-        }, new IntentFilter(DELIVERED));
+//        context.registerReceiver(new BroadcastReceiver() {
+//
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                Toast.makeText(context, "Deliverd",
+//                        Toast.LENGTH_LONG).show();
+//            }
+//
+//        }, new IntentFilter(DELIVERED));
 
 
             SmsManager smsManager = SmsManager.getDefault();
