@@ -1,4 +1,4 @@
-package com.example.pritesh.smstimer;
+package com.patel.pritesh.smstimer;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -15,38 +15,30 @@ public class NotificationReciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String result = "";
 
         final NotificationManager notificationManager=  (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent intent1=new Intent(context,Time_Picker.class);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context,0,intent1,0);
-       // PendingIntent pendingIntent1=PendingIntent.getActivity(context,0,intent1,0);
         final Notification.Builder notification_sent=new Notification.Builder(context)
                 .setContentTitle("SMS SENT")
                 .setContentText("Your SMS has Been Sent")
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.favicon);
+                .setAutoCancel(true)
+                .setSmallIcon(com.patel.pritesh.smstimer.R.drawable.sms_timer);
         final Notification.Builder notification_notsent = new Notification.Builder(context)
-                .setContentTitle("SMS SENT")
+                .setContentTitle("SMS NOT SENT")
                 .setContentText("Your SMS was not sent due to no network service")
                 .setContentIntent(pendingIntent)
-                .setSmallIcon(R.drawable.favicon);
-//        final Notification.Builder notification_delivered = new Notification.Builder(context)
-//                .setContentTitle("SMS Delivered")
-//                .setContentText("Your SMS was delivered")
-//                .setContentIntent(pendingIntent1)
-//                .setSmallIcon(R.drawable.favicon);
-
+                .setAutoCancel(true)
+                .setSmallIcon(com.patel.pritesh.smstimer.R.drawable.sms_timer);
             switch (getResultCode()) {
 
                 case Activity.RESULT_OK:
-                    result = "Transmission successful";
                     notificationManager.notify(0, notification_sent.build());
                     break;
                 case SmsManager.RESULT_ERROR_NO_SERVICE:
-                    result = "No service";
                     notificationManager.notify(0, notification_notsent.build());
                     break;
             }

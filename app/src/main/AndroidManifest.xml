@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pritesh.smstimer" >
+    package="com.patel.pritesh.smstimer">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/favicon"
+        android:icon="@drawable/sms_timer"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".Time_Picker"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/AppTheme.NoActionBar">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver
@@ -29,13 +25,30 @@
             android:taskAffinity="" />
         <receiver
             android:name=".NotificationReciever"
-
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
-                <action android:name="notification"/>
+                <action android:name="notification" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".deliveryReciever"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="notification_delivered" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".sms_list"
+            >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
