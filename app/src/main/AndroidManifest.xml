@@ -12,9 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Time_Picker"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <receiver
             android:name=".MyReceiver"
@@ -40,15 +38,14 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".sms_list"
-            >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".sms_list">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
+        <activity android:name=".sms_review"></activity>
     </application>
 
 </manifest>

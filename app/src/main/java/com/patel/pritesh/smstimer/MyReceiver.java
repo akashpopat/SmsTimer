@@ -15,9 +15,14 @@ public class MyReceiver extends BroadcastReceiver {
     public MyReceiver() {
 
     }
+    array ob=new array();
+    int c=0;
+    PendingIntent pend;
 
     //@Override
     public void onReceive(Context context, Intent intent) {
+            int pos;
+
 
             Log.i(tag,"Sending");
             final NotificationManager notificationManager=  (NotificationManager)
@@ -39,7 +44,7 @@ public class MyReceiver extends BroadcastReceiver {
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(com.patel.pritesh.smstimer.R.drawable.sms_timer);
         //Intent for sending confirmation
-
+        pos=intent.getIntExtra("pos",9999);
         Intent sent=new Intent();
         sent.setAction("notification");
         //PendingIntent for sending confirmation
@@ -53,12 +58,30 @@ public class MyReceiver extends BroadcastReceiver {
                 context, 0, deliveryIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
+        if(array.select>=pos)
+            array.select=pos;
+        ob.arrange(pos);
+        sms_list.min[4]=0;
+        sms_list.hour[4]=0;
+        sms_list.Phone[4]=null;
+        sms_list.msg[4]=null;
+        array.a[4]=false;
+        c=pos;
+        pend=  Time_Picker.pendingarray.get(pos);
+        Time_Picker.alarmManager[pos].cancel(pend);
+        Time_Picker.pendingarray.remove(pos);
 
-
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(Time_Picker.Phone,null, Time_Picker.Message, sentIntent
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(Time_Picker.Phone,null, Time_Picker.Message, sentIntent
                     ,deliverPI);
-        prevention.timer=0;
+
+        Intent in = new Intent(context,sms_list.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        in.putExtra("Flag",1);
+        c=array.select;
+        context.startActivity(in);
+
+       // prevention.timer=0;
 
           //  Toast.makeText(context, "Sms Sent", Toast.LENGTH_LONG).show();
 

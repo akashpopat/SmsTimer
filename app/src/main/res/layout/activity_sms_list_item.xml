@@ -4,6 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/clock"
+        android:layout_gravity="center_horizontal"
+        android:textSize="44sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,17 +33,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/status"
-        android:textSize="25dp"
-        android:textColor="@color/material_deep_teal_500"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+
+
 
 </LinearLayout>
