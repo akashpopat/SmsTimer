@@ -11,9 +11,15 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 public class sms_list extends AppCompatActivity {
     public ListView lv;
     array ob=new array();
+    private AdView mAdView;
+    private Button btnFullscreenAd;
 String tag="pritesh";
     public static String[] Phone=new String[5];
     public static String[] msg=new String[5];
@@ -22,6 +28,7 @@ String tag="pritesh";
     Button setTimer;
     ListAdapter adapter;
     int f;
+    InterstitialAd mInterstitialAd;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         f=0;
@@ -34,7 +41,21 @@ String tag="pritesh";
         setContentView(R.layout.activity_sms_list);
         else
         setContentView(R.layout.no_sms);
+
+
+        mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                // Check the LogCat to get your test device ID
+//                .addTestDevice("C04B1BFFB0774708339BC273F8A43708")
+//                .build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("2217D213C9103D43B6112EB151986803")
+                .build();
+        mAdView.loadAd(adRequest);
         Log.i(tag,"smslist");
+
+
         Bundle bundle=getIntent().getExtras();
        if(bundle==null){return;}
         int flag=bundle.getInt("Flag");
@@ -70,6 +91,7 @@ String tag="pritesh";
     void setTimer(View view) {
         ob.sort();
         array.select=array.select;
+
         if (array.select == 5) {
             Toast.makeText(getApplicationContext(), "Sorry cannot create more than 5 timer", Toast.LENGTH_SHORT).show();
         } else{

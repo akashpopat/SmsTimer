@@ -9,5 +9,8 @@
     <string name="min"></string>
     <string name="title_activity_time__picker">Time_Picker</string>
     <string name="title_activity_alarm__list">Alarm_List</string>
+    <string name="banner_home_footer">ca-app-pub-1508240473467237/6489589100</string>
+    <string name="interstitial_full_screen">ca-app-pub-1508240473467237/5791585104</string>
+
 
 </resources>

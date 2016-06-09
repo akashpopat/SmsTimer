@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -30,11 +34,26 @@ public class Time_Picker extends AppCompatActivity {
     public int i;
     array ob=new array();
     static ArrayList<PendingIntent> pendingarray=new ArrayList<>(5);
-
+    InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.patel.pritesh.smstimer.R.layout.activity_time_picker);
+        mInterstitialAd = new InterstitialAd(this);
+
+        // set the ad unit ID
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_full_screen));
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("2217D213C9103D43B6112EB151986803")
+                .build();
+        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                showInterstitial();
+            }
+        });
+
         Log.i(tag,"time");
         message=(EditText)findViewById(com.patel.pritesh.smstimer.R.id.message);
         phone=(EditText)findViewById(com.patel.pritesh.smstimer.R.id.Phone) ;
@@ -44,6 +63,12 @@ public class Time_Picker extends AppCompatActivity {
 
 
     }
+    private void showInterstitial() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+    }
+
     public void setAlarm(View view) {
 
                 //      AlarmManager alarmManager[]=new AlarmManager[5];
