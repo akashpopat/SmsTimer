@@ -1,4 +1,4 @@
-package com.patel.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -26,13 +26,13 @@ public class NotificationReciever extends BroadcastReceiver {
                 .setContentText("Your SMS has Been Sent")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
-                .setSmallIcon(com.patel.pritesh.smstimer.R.drawable.sms_timer);
+                .setSmallIcon(my.patel.pritesh.smstimer.R.drawable.sms_timer);
         final Notification.Builder notification_notsent = new Notification.Builder(context)
                 .setContentTitle("SMS NOT SENT")
                 .setContentText("Your SMS was not sent due to no network service")
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
-                .setSmallIcon(com.patel.pritesh.smstimer.R.drawable.sms_timer);
+                .setSmallIcon(my.patel.pritesh.smstimer.R.drawable.sms_timer);
             switch (getResultCode()) {
 
                 case Activity.RESULT_OK:

@@ -1,4 +1,4 @@
-package com.example.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.patel.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 /**
  * Created by Pritesh on 6/6/2016.

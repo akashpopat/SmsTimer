@@ -1,4 +1,4 @@
-package com.patel.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -24,7 +24,7 @@ public class deliveryReciever extends BroadcastReceiver {
                 .setContentText("Your Sms was delivered")
                 .setContentIntent(pendingDelivered)
                 .setAutoCancel(true)
-                .setSmallIcon(com.patel.pritesh.smstimer.R.drawable.sms_timer);
+                .setSmallIcon(my.patel.pritesh.smstimer.R.drawable.sms_timer);
 
         switch (getResultCode()) {
             case Activity.RESULT_OK:

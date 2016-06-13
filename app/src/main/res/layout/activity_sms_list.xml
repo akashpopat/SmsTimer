@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.patel.pritesh.smstimer.sms_list">
+    tools:context="my.patel.pritesh.smstimer.sms_list">
 
     <Button
         android:layout_width="match_parent"

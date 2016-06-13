@@ -1,4 +1,4 @@
-package com.example.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.patel.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -61,6 +61,7 @@ public class sms_review extends AppCompatActivity {
                     Time_Picker.alarmManager[pos].cancel(pend);
                     Time_Picker.pendingarray.remove(pos);
                     Intent in = new Intent(getApplicationContext(),sms_list.class);
+                    in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     in.putExtra("Flag",1);
                     startActivity(in);
 

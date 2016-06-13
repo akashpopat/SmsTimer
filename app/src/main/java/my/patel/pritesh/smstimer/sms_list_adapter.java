@@ -1,4 +1,4 @@
-package com.patel.pritesh.smstimer;
+package my.patel.pritesh.smstimer;
 
 import android.content.Context;
 import android.view.LayoutInflater;

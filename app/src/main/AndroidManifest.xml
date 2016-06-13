@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.patel.pritesh.smstimer">
+    package="my.patel.pritesh.smstimer">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,18 +18,18 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".Time_Picker"
+            android:name="my.patel.pritesh.smstimer.Time_Picker"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <receiver
-            android:name=".MyReceiver"
+            android:name="my.patel.pritesh.smstimer.MyReceiver"
             android:enabled="true"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask"
             android:taskAffinity="" />
         <receiver
-            android:name=".NotificationReciever"
+            android:name="my.patel.pritesh.smstimer.NotificationReciever"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -37,7 +37,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".deliveryReciever"
+            android:name="my.patel.pritesh.smstimer.deliveryReciever"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -45,14 +45,14 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".sms_list">
+        <activity android:name="my.patel.pritesh.smstimer.sms_list">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sms_review"></activity>
+        <activity android:name="my.patel.pritesh.smstimer.sms_review"></activity>
     </application>
 
 </manifest>
