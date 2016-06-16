@@ -1,11 +1,15 @@
 package my.patel.pritesh.smstimer;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,19 +25,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Time_Picker extends AppCompatActivity {
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1234;
     TimePicker time_picker;
     String tag="pritesh";
-    static AlarmManager[] alarmManager=new AlarmManager[5];
-    static PendingIntent[] pendingIntent = new PendingIntent[5];
+    public static AlarmManager[] alarmManager=new AlarmManager[5];
+    public static PendingIntent[] pendingIntent = new PendingIntent[5];
     EditText message;
+    public static String  name = null;
     EditText phone;
     Intent myIntent;
-  //  AlarmManager alarmManager;
-    //PendingIntent pendingIntent;
     public static String Phone;
+    private static final int RESULT_PICK_CONTACT = 85500;
     public static String Message;
     public int i;
     long h,m;
+   // final private int REQUEST_CODE_ASK_PERMISSIONS = 1234;
+
     array ob=new array();
     static ArrayList<PendingIntent> pendingarray=new ArrayList<>(5);
     InterstitialAd mInterstitialAd;
@@ -42,14 +49,36 @@ public class Time_Picker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(my.patel.pritesh.smstimer.R.layout.activity_time_picker);
         mInterstitialAd = new InterstitialAd(this);
-
+//        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+//                Manifest.permission.INTERNET)
+//                != PackageManager.PERMISSION_GRANTED)
+//        {
+//            Log.i(tag,"inside if");
+//            ActivityCompat.requestPermissions((Activity) getApplicationContext(),
+//                    new String[]{Manifest.permission.INTERNET},REQUEST_CODE_ASK_PERMISSIONS);
+//        }
         // set the ad unit ID
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_full_screen));
 
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         mInterstitialAd.loadAd(adRequest);
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
 
+            // Should we show an explanation?
+                         // No explanation needed, we can request the permission.
+                Log.i(tag,"insede time");
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+
+        }
 
         Log.i(tag,"time");
         message=(EditText)findViewById(my.patel.pritesh.smstimer.R.id.message);
@@ -58,6 +87,30 @@ public class Time_Picker extends AppCompatActivity {
         time_picker.setIs24HourView(true);
 
 
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(getApplicationContext(),"got sms permission",Toast.LENGTH_SHORT);
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
     private void showInterstitial() {
         if (mInterstitialAd.isLoaded()) {
@@ -107,6 +160,7 @@ public class Time_Picker extends AppCompatActivity {
              //Pending Intent for sending the intent afterwards
              pendingIntent[array.select] = PendingIntent.getBroadcast(this.getApplicationContext(), array.select, myIntent, 0);
              alarmManager[array.select] = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
+
              alarmManager[array.select].set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+a*1000, pendingIntent[array.select]);
 
              pendingarray.add(pendingIntent[array.select]);
@@ -119,9 +173,6 @@ public class Time_Picker extends AppCompatActivity {
              back.putExtra("MIN", (int) cal.get(Calendar.MINUTE));
              back.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
              startActivity(back);
-
-             //int b;
-
          }
          else
          {
@@ -129,5 +180,6 @@ public class Time_Picker extends AppCompatActivity {
                array.a[array.select]=false;
                ob.sort();
          }
+
     }
 }

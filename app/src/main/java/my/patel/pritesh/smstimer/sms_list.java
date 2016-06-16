@@ -22,6 +22,7 @@ import com.google.android.gms.ads.AdView;
 
 public class sms_list extends AppCompatActivity {
     public ListView lv;
+    SMS sms[]=new SMS[5];
     array ob = new array();
     private AdView mAdView;
     String tag = "pritesh";
@@ -42,12 +43,14 @@ public class sms_list extends AppCompatActivity {
                 break;
             }
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.SEND_SMS)
+                Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED)
         {
+            Log.i(tag,"inside smstimer");
             ActivityCompat.requestPermissions((Activity) getApplicationContext(),
-                    new String[]{Manifest.permission.SEND_SMS},REQUEST_CODE_ASK_PERMISSIONS);
+                    new String[]{Manifest.permission.INTERNET},REQUEST_CODE_ASK_PERMISSIONS);
         }
+
         if (f == 1)
         {
             setContentView(R.layout.activity_sms_list);
