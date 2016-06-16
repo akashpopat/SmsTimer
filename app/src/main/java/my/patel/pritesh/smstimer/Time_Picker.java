@@ -2,6 +2,8 @@ package my.patel.pritesh.smstimer;
 
 import android.Manifest;
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -62,6 +64,7 @@ public class Time_Picker extends AppCompatActivity {
 
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
+
         mInterstitialAd.loadAd(adRequest);
         if (ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.SEND_SMS)
@@ -155,7 +158,16 @@ public class Time_Picker extends AppCompatActivity {
              a=(m+h)*60;
              myIntent = new Intent(this, MyReceiver.class);
              myIntent.putExtra("pos",array.select);
+             final NotificationManager notificationManager=  (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+             Intent intent1=new Intent(getApplicationContext(),sms_list.class);
 
+             PendingIntent pendingIntent2 = PendingIntent.getActivity(getApplicationContext(),0,intent1,0);
+             final Notification.Builder notification_sent=new Notification.Builder(getApplicationContext())
+                     .setContentTitle("SMS TIMER")
+                     .setContentText("You have a pending timer")
+                     .setContentIntent(pendingIntent2)
+                     .setSmallIcon(my.patel.pritesh.smstimer.R.drawable.sms_timer);
+             notificationManager.notify(0, notification_sent.build());
 
              //Pending Intent for sending the intent afterwards
              pendingIntent[array.select] = PendingIntent.getBroadcast(this.getApplicationContext(), array.select, myIntent, 0);
