@@ -18,7 +18,7 @@ public class NotificationReciever extends BroadcastReceiver {
 
         final NotificationManager notificationManager=  (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent intent1=new Intent(context,Time_Picker.class);
+        Intent intent1=new Intent(context,sms_list.class);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context,0,intent1,0);
         final Notification.Builder notification_sent=new Notification.Builder(context)

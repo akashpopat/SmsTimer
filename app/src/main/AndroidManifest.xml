@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -13,24 +12,26 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="my.patel.pritesh.smstimer.Time_Picker"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".Time_Picker"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
-            android:name="my.patel.pritesh.smstimer.MyReceiver"
+            android:name=".MyReceiver"
             android:enabled="true"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:launchMode="singleTask"
-            android:taskAffinity="" />
+            android:process="remote">
+            <intent-filter>
+                <action android:name="SEND" />
+            </intent-filter>
+        </receiver>
         <receiver
-            android:name="my.patel.pritesh.smstimer.NotificationReciever"
+            android:name=".NotificationReciever"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -38,7 +39,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="my.patel.pritesh.smstimer.deliveryReciever"
+            android:name=".deliveryReciever"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -46,14 +47,19 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="my.patel.pritesh.smstimer.sms_list">
+        <activity android:name=".sms_list">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="my.patel.pritesh.smstimer.sms_review"></activity>
+        <activity android:name=".sms_review" />
+
+        <service
+            android:name=".alarmService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

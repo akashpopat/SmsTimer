@@ -1,5 +1,8 @@
 package my.patel.pritesh.smstimer;
+/*
 
+            android:taskAffinity=""
+            android:alwaysRetainTaskState="true"*/
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -23,7 +26,6 @@ import com.google.android.gms.ads.AdView;
 public class sms_list extends AppCompatActivity {
     public ListView lv;
     SMS sms[]=new SMS[5];
-    array ob = new array();
     private AdView mAdView;
     String tag = "pritesh";
     public static String[] Phone = new String[5];
@@ -62,6 +64,7 @@ public class sms_list extends AppCompatActivity {
 
             lv = (ListView) findViewById(R.id.listView);
             if (flag != 1) {
+                f=array.select;
                 hour[array.select] = bundle.getInt("HOUR");
                 min[array.select] = bundle.getInt("MIN");
                 Phone[array.select] = bundle.getString("PHONE");
@@ -91,6 +94,7 @@ public class sms_list extends AppCompatActivity {
             setContentView(R.layout.no_sms);
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("2217D213C9103D43B6112EB151986803")
                 .build();
         mAdView.loadAd(adRequest);
         Log.i(tag, "smslist");
@@ -98,7 +102,7 @@ public class sms_list extends AppCompatActivity {
     public void setTimer(View view)
     {
 
-        ob.sort();
+
 
         if (array.select == 5) {
             Toast.makeText(getApplicationContext(), "Sorry cannot create more than 5 timer", Toast.LENGTH_SHORT).show();

@@ -6,7 +6,7 @@ package my.patel.pritesh.smstimer;
 public class array {
     public static boolean a[]=new boolean[5];
     public static int select;
-    void sort()
+    public static void sort()
     {
         int i,flag=0;
         for(i=0;i<5;i++)
@@ -27,7 +27,7 @@ public class array {
             select=5;
 
     }
-    void arrange(int pos)
+    static void arrange(int pos)
     {
         int i;
         for(i=pos;i<4;i++)
@@ -37,7 +37,7 @@ public class array {
             sms_list.Phone[i]=sms_list.Phone[i+1];
             sms_list.min[i]=sms_list.min[i+1];
             sms_list.hour[i]=sms_list.hour[i+1];
-
+            Time_Picker.pendingIntent[i]=Time_Picker.pendingIntent[i+1];
         }
     }
 

@@ -7,8 +7,8 @@ android {
         applicationId "my.patel.pritesh.smstimer"
         minSdkVersion 17
         targetSdkVersion 23
-        versionName '1.3'
-        versionCode 5
+        versionName '1.4'
+        versionCode 6
     }
     buildTypes {
         release {

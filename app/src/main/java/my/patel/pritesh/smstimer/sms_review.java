@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-
 public class sms_review extends AppCompatActivity {
     TextView clock1,ph,msg,status;
     int pos;
@@ -57,9 +56,9 @@ public class sms_review extends AppCompatActivity {
                     sms_list.Phone[4]=null;
                     sms_list.msg[4]=null;
                     array.a[4]=false;
-                    pend=  Time_Picker.pendingarray.get(pos);
-                    Time_Picker.alarmManager[pos].cancel(pend);
-                    Time_Picker.pendingarray.remove(pos);
+                   // pend=  Time_Picker.pendingarray.get(pos);
+                    Time_Picker.alarmManager[pos].cancel(Time_Picker.pendingIntent[pos]);
+                    //Time_Picker.pendingarray.remove(pos);
                     Intent in = new Intent(getApplicationContext(),sms_list.class);
                     in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     in.putExtra("Flag",1);
