@@ -7,13 +7,22 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class deliveryReciever extends BroadcastReceiver {
+    FirebaseAnalytics mFirebaseAnalytics;
     public deliveryReciever() {
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle=new Bundle();
+        bundle.putInt("sent",1);
+        mFirebaseAnalytics.logEvent("sent",bundle);
+
         final NotificationManager notificationManager=  (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent intent1=new Intent(context,Time_Picker.class);

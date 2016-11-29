@@ -9,14 +9,14 @@ android {
             storePassword 'pritesh1995'
         }
     }
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
     defaultConfig {
         applicationId "my.patel.pritesh.smstimer"
         minSdkVersion 17
-        targetSdkVersion 23
-        versionName '1.4'
-        versionCode 6
+        targetSdkVersion 25
+        versionName '1.5'
+        versionCode 7
     }
     buildTypes {
         release {
@@ -31,7 +31,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.google.android.gms:play-services-ads:10.0.0'
+    compile 'com.google.firebase:firebase-core:10.0.0'
 }
+apply plugin: 'com.google.gms.google-services'

@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class sms_list extends AppCompatActivity {
     public ListView lv;
@@ -34,11 +35,16 @@ public class sms_list extends AppCompatActivity {
     public static int[] min = new int[5];
     Button setTimer;
     ListAdapter adapter;
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     int f;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         f = 0;
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         for (int i = 0; i < 5; i++)
             if (Phone[i] != null) {
                 f = 1;
