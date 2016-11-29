@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'duke1995'
             keyPassword 'pritesh1995'
-            storeFile file('E:/My apps/sms.jks')
+            storeFile file('/home/prittesh/Android/sms.jks')
             storePassword 'pritesh1995'
         }
     }
