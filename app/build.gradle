@@ -10,7 +10,7 @@ android {
         }
     }
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25"
     defaultConfig {
         applicationId "my.patel.pritesh.smstimer"
         minSdkVersion 17
